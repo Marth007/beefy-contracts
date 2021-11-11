@@ -5,18 +5,18 @@ import { setCorrectCallFee } from "../../utils/setCorrectCallFee";
 import { setPendingRewardsFunctionName } from "../../utils/setPendingRewardsFunctionName";
 import { verifyContract } from "../../utils/verifyContract";
 
-const registerSubsidy = require("../../utils/registerSubsidy");
-
+//const registerSubsidy = require("../../utils/registerSubsidy");
+const DAR = "0x23CE9e926048273eF83be0A3A8Ba9Cb6D45cd978"
 const {
-  USDC: { address: USDC },
-  WMATIC: { address: WMATIC },
-  polyWISE: { address: polyWISE },
-} = addressBook.polygon.tokens;
-const { polywise, quickswap, beefyfinance } = addressBook.polygon.platforms;
+  CAKE: { address: CAKE },
+  WBNB: { address: WBNB },
+  //DAR: { address: "0x23CE9e926048273eF83be0A3A8Ba9Cb6D45cd978 },
+} = addressBook.bsc.tokens;
+const { pancake, beefyfinance } = addressBook.bsc.platforms;
 
 const shouldVerifyOnEtherscan = false;
 
-const want = web3.utils.toChecksumAddress("0x2F9209Ef6fA6C002bf6fC99124336e24F88B62D0");
+const want = web3.utils.toChecksumAddress("0x062f88E2B4896e823ac78Ac314468c29eEC4186d");
 
 const vaultParams = {
   mooName: "Moo Polywise Quick USDC-WISE",
@@ -26,21 +26,21 @@ const vaultParams = {
 
 const strategyParams = {
   want,
-  poolId: 1,
-  chef: polywise.masterchef,
-  unirouter: quickswap.router,
-  strategist: "0x010dA5FF62B6e45f89FA7B2d8CEd5a8b5754eC1b", // some address
+  poolId: 471,
+  chef: pancake.masterchef,
+  unirouter: pancake.router,
+  strategist: "0xa776f91e4d67c8b3d2515d0e6f37ee6b73e24cb0", // some address
   keeper: beefyfinance.keeper,
   beefyFeeRecipient: beefyfinance.beefyFeeRecipient,
-  outputToNativeRoute: [polyWISE, WMATIC],
-  outputToLp0Route: [polyWISE, USDC],
-  outputToLp1Route: [polyWISE],
-  pendingRewardsFunctionName: "pendingWise", // used for rewardsAvailable(), use correct function name from masterchef
+  outputToNativeRoute: [CAKE, WBNB],
+  outputToLp0Route: [CAKE, WBNB, DAR],
+  outputToLp1Route: [CAKE, WBNB],
+  pendingRewardsFunctionName: "pendingCake", // used for rewardsAvailable(), use correct function name from masterchef
 };
 
 const contractNames = {
   vault: "BeefyVaultV6",
-  strategy: "StrategyCommonChefLP",
+  strategy: "StrategyCommonChefLPBsc",
 };
 
 async function main() {
@@ -112,13 +112,13 @@ async function main() {
   console.log();
 
   await Promise.all(verifyContractsPromises);
-
+/*
   if (hardhat.network.name === "bsc") {
     await registerSubsidy(vault.address, deployer);
     await registerSubsidy(strategy.address, deployer);
   }
+  */
 }
-
 main()
   .then(() => process.exit(0))
   .catch(error => {
