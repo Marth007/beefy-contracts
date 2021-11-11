@@ -19,8 +19,8 @@ const shouldVerifyOnEtherscan = false;
 const want = web3.utils.toChecksumAddress("0x062f88E2B4896e823ac78Ac314468c29eEC4186d");
 
 const vaultParams = {
-  mooName: "Moo Polywise Quick USDC-WISE",
-  mooSymbol: "mooPolywiseQuickUSDC-WISE",
+  mooName: "Moo CakeV2 DAR-BNB",
+  mooSymbol: "mooCakeV2DAR-BNB",
   delay: 21600,
 };
 
