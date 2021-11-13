@@ -7,15 +7,15 @@ const { delay } = require("../../utils/timeHelpers");
 
 const TIMEOUT = 10 * 60 * 100000;
 
-const chainName = "avax";
+const chainName = "bsc";
 const chainData = addressBook[chainName];
 const { beefyfinance } = chainData.platforms;
 
 const config = {
-  vault: "0x282B11E65f0B49363D4505F91c7A44fBEe6bCc0b",
+  vault: "0x9f3371AA6F7b48485Cb9eb3D6A79ea9298565410",
   vaultContract: "BeefyVaultV6",
-  strategyContract: "StrategyCommonChefLP",
-  testAmount: ethers.utils.parseEther("5"),
+  strategyContract: "StrategyCommonChefLPBsc",
+  testAmount: ethers.utils.parseEther("5000"),
   wnative: chainData.tokens.WNATIVE.address,
   keeper: beefyfinance.keeper,
   strategyOwner: beefyfinance.strategyOwner,
