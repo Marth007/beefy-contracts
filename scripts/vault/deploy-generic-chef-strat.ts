@@ -6,11 +6,10 @@ import { setPendingRewardsFunctionName } from "../../utils/setPendingRewardsFunc
 import { verifyContract } from "../../utils/verifyContract";
 
 //const registerSubsidy = require("../../utils/registerSubsidy");
-const DAR = "0x23CE9e926048273eF83be0A3A8Ba9Cb6D45cd978"
 const {
   CAKE: { address: CAKE },
   WBNB: { address: WBNB },
-  //DAR: { address: "0x23CE9e926048273eF83be0A3A8Ba9Cb6D45cd978 },
+  DAR: { address: DAR },
 } = addressBook.bsc.tokens;
 const { pancake, beefyfinance } = addressBook.bsc.platforms;
 
