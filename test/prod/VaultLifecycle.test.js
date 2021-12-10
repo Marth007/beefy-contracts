@@ -5,18 +5,19 @@ import { chainCallFeeMap } from "../../utils/chainCallFeeMap";
 const { zapNativeToToken, getVaultWant, unpauseIfPaused, getUnirouterData } = require("../../utils/testHelpers");
 const { delay } = require("../../utils/timeHelpers");
 
-const TIMEOUT = 10 * 60 * 100000;
+const TIMEOUT = 100 * 60 * 100000;
 
-const chainName = "avax";
+const chainName = "moonriver";
 const chainData = addressBook[chainName];
 const { beefyfinance } = chainData.platforms;
 
 const config = {
-  vault: "0xfda2E1E9BE74F60738e935b06A5d9C32143B18D5",
+  vault: "0x0DB1744a6D5bb4aB5FeaE826af120c08d84eefd4",
+  // vault: "0x0B702b9c0B170dd7199fA9e66d8E9440184c569e",
   vaultContract: "BeefyVaultV6",
-  strategyContract: "StrategyCommonChefLP",
+  strategyContract: "StrategyMrSushiLP",
   testAmount: ethers.utils.parseEther("5"),
-  wnative: chainData.tokens.WNATIVE.address,
+  wnative: chainData.tokens.WNATIVE_SUSHI.address,
   keeper: beefyfinance.keeper,
   strategyOwner: beefyfinance.strategyOwner,
   vaultOwner: beefyfinance.vaultOwner,
@@ -24,7 +25,7 @@ const config = {
 
 describe("VaultLifecycleTest", () => {
   let vault, strategy, unirouter, want, deployer, keeper, other;
-
+  
   beforeEach(async () => {
     [deployer, keeper, other] = await ethers.getSigners();
 
@@ -46,11 +47,11 @@ describe("VaultLifecycleTest", () => {
       recipient: deployer.address,
     });
     const wantBal = await want.balanceOf(deployer.address);
-    await want.transfer(other.address, wantBal.div(2));
+    // await want.transfer(other.address, wantBal.div(2));
   });
 
   it("User can deposit and withdraw from the vault.", async () => {
-    await unpauseIfPaused(strategy, keeper);
+    // await unpauseIfPaused(strategy, keeper);
 
     const wantBalStart = await want.balanceOf(deployer.address);
 
@@ -65,7 +66,7 @@ describe("VaultLifecycleTest", () => {
   }).timeout(TIMEOUT);
 
   it("Harvests work as expected.", async () => {
-    await unpauseIfPaused(strategy, keeper);
+    // await unpauseIfPaused(strategy, keeper);
 
     const wantBalStart = await want.balanceOf(deployer.address);
     await want.approve(vault.address, wantBalStart);
@@ -76,7 +77,7 @@ describe("VaultLifecycleTest", () => {
     await delay(5000);
   //  const callRewardBeforeHarvest = await strategy.callReward();
   //  expect(callRewardBeforeHarvest).to.be.gt(0);
-    await strategy.harvest(deployer);
+    await strategy.harvestWithCallFeeRecipient("0xf50225a84382c74cbdea10b0c176f71fc3de0c4d");
     const vaultBalAfterHarvest = await vault.balance();
     const pricePerShareAfterHarvest = await vault.getPricePerFullShare();
   //  const callRewardAfterHarvest = await strategy.callReward();
@@ -94,8 +95,8 @@ describe("VaultLifecycleTest", () => {
     expect(lastHarvest).to.be.gt(0);
   }).timeout(TIMEOUT);
 
-  it("Manager can panic.", async () => {
-    await unpauseIfPaused(strategy, keeper);
+  xit("Manager can panic.", async () => {
+    // await unpauseIfPaused(strategy, keeper);
 
     const wantBalStart = await want.balanceOf(deployer.address);
     await want.approve(vault.address, wantBalStart);
@@ -123,7 +124,7 @@ describe("VaultLifecycleTest", () => {
     expect(wantBalFinal).to.be.gt(wantBalStart.mul(99).div(100));
   }).timeout(TIMEOUT);
 
-  it("New user deposit/withdrawals don't lower other users balances.", async () => {
+  xit("New user deposit/withdrawals don't lower other users balances.", async () => {
     await unpauseIfPaused(strategy, keeper);
 
     const wantBalStart = await want.balanceOf(deployer.address);
@@ -145,7 +146,7 @@ describe("VaultLifecycleTest", () => {
     expect(wantBalFinal).to.be.gt(wantBalStart.mul(99).div(100));
   }).timeout(TIMEOUT);
 
-  it("It has the correct owners and keeper.", async () => {
+  xit("It has the correct owners and keeper.", async () => {
     const vaultOwner = await vault.owner();
     const stratOwner = await strategy.owner();
     const stratKeeper = await strategy.keeper();
@@ -155,7 +156,7 @@ describe("VaultLifecycleTest", () => {
     expect(stratKeeper).to.equal(config.keeper);
   }).timeout(TIMEOUT);
 
-  it("Vault and strat references are correct", async () => {
+  xit("Vault and strat references are correct", async () => {
     const stratReference = await vault.strategy();
     const vaultReference = await strategy.vault();
 
@@ -163,7 +164,7 @@ describe("VaultLifecycleTest", () => {
     expect(vaultReference).to.equal(ethers.utils.getAddress(vault.address));
   }).timeout(TIMEOUT);
 
-  it("Displays routing correctly", async () => {
+  xit("Displays routing correctly", async () => {
     const { tokenAddressMap } = addressBook[chainName];
 
     // outputToLp0Route
@@ -205,7 +206,7 @@ describe("VaultLifecycleTest", () => {
     }
   }).timeout(TIMEOUT);
 
-  it("Has correct call fee", async () => {
+  xit("Has correct call fee", async () => {
     const callFee = await strategy.callFee();
 
     const expectedCallFee = chainCallFeeMap[chainName];
@@ -214,7 +215,7 @@ describe("VaultLifecycleTest", () => {
     expect(actualCallFee).to.equal(expectedCallFee);
   }).timeout(TIMEOUT);
 
-  it("has withdraw fee of 0 if harvest on deposit is true", async () => {
+  xit("has withdraw fee of 0 if harvest on deposit is true", async () => {
     const harvestOnDeposit = await strategy.harvestOnDeposit();
 
     const withdrawalFee = await strategy.withdrawalFee();

@@ -13,6 +13,7 @@ import "../../interfaces/sushi/IRewarder.sol";
 import "../../interfaces/common/IWrappedNative.sol";
 import "../Common/StratManager.sol";
 import "../Common/FeeManager.sol";
+import "hardhat/console.sol";
 
 contract StrategyMrSushiLP is StratManager, FeeManager {
     using SafeERC20 for IERC20;
@@ -30,7 +31,6 @@ contract StrategyMrSushiLP is StratManager, FeeManager {
 
     // Third party contracts
     address public chef;
-    address public unirouter2; // needed for wrapping native due to different wnative being used for performance fees
     uint256 public poolId;
 
     uint256 public lastHarvest;
@@ -90,8 +90,9 @@ contract StrategyMrSushiLP is StratManager, FeeManager {
 
         if (wantBal > 0) {
             IMiniChefV2(chef).deposit(poolId, wantBal, address(this));
-            emit Deposit(balanceOf());
+            emit Deposit(balanceOf()); //?
         }
+
     }
 
     function withdraw(uint256 _amount) external {
@@ -100,7 +101,7 @@ contract StrategyMrSushiLP is StratManager, FeeManager {
         uint256 wantBal = IERC20(want).balanceOf(address(this));
 
         if (wantBal < _amount) {
-            IMiniChefV2(chef).withdraw(poolId, _amount.sub(wantBal), address(this));
+            IMiniChefV2(chef).withdraw(poolId, _amount.sub(wantBal), address(this)); 
             wantBal = IERC20(want).balanceOf(address(this));
         }
 
@@ -113,12 +114,14 @@ contract StrategyMrSushiLP is StratManager, FeeManager {
             wantBal = wantBal.sub(withdrawalFeeAmount);
         }
 
-        IERC20(want).safeTransfer(vault, wantBal);
+        IERC20(want).safeTransfer(vault, wantBal); 
 
-        emit Withdraw(balanceOf());
+        emit Withdraw(balanceOf()); 
     }
 
     function beforeDeposit() external override {
+        console.log("Before Deposit");
+
         if (harvestOnDeposit) {
             require(msg.sender == vault, "!vault");
             _harvest(tx.origin);
@@ -126,6 +129,8 @@ contract StrategyMrSushiLP is StratManager, FeeManager {
     }
 
     function harvest() external virtual {
+        console.log("start harvest og");
+
         _harvest(tx.origin);
     }
 
@@ -139,14 +144,17 @@ contract StrategyMrSushiLP is StratManager, FeeManager {
 
     // compounds earnings and charges performance fee
     function _harvest(address callFeeRecipient) internal whenNotPaused {
+        console.log("start harvest");
         IMiniChefV2(chef).harvest(poolId, address(this));
         uint256 outputBal = IERC20(output).balanceOf(address(this));
         uint256 sushiNativeBal = IERC20(sushiNative).balanceOf(address(this));
+        console.log("start harvest2");
         if (outputBal > 0 || sushiNativeBal > 0) {
             chargeFees(callFeeRecipient);
             addLiquidity();
             uint256 wantHarvested = balanceOfWant();
             deposit();
+            console.log("in if harvest");
             lastHarvest = block.timestamp;
             emit StratHarvest(msg.sender, wantHarvested, balanceOf());
         }
@@ -154,17 +162,24 @@ contract StrategyMrSushiLP is StratManager, FeeManager {
 
     // performance fees
     function chargeFees(address callFeeRecipient) internal {
+        console.log("start charging fees");
         // rewards are in sushi and sushiNative, convert all to sushiNative 
         uint256 toSushiNative = IERC20(output).balanceOf(address(this));
         if (toSushiNative > 0) {
             IUniswapRouterETH(unirouter).swapExactTokensForTokens(toSushiNative, 0, outputToSushiNativeRoute, address(this), block.timestamp);
         }
-
+        console.log("finished converting to sushi native");
         // unwrap fees in sushiNative to native gas
-        IWrappedNative(sushiNative).withdraw(IERC20(sushiNative).balanceOf(address(this)).mul(45).div(1000));
+        uint256 toGas = IERC20(sushiNative).balanceOf(address(this)).mul(45).div(1000);
+        console.log("toGas");
+        console.log("sushiNative bal %s", toSushiNative);
+        console.log("solarNative bal %s", IERC20(solarNative).balanceOf(address(this)));
+        console.log("toGas bal %s", toGas);
+        IWrappedNative(sushiNative).withdraw(toGas);
+        console.log("finished unwrapping to gasNative");
         // wrap fees to solarNative
         IWrappedNative(solarNative).deposit{value: address(this).balance}();
-
+        console.log("finished wrappings");
         uint256 solarNativeBal = IERC20(solarNative).balanceOf(address(this));
 
         uint256 callFeeAmount = solarNativeBal.mul(callFee).div(MAX_FEE);
@@ -175,10 +190,12 @@ contract StrategyMrSushiLP is StratManager, FeeManager {
 
         uint256 strategistFee = solarNativeBal.mul(STRATEGIST_FEE).div(MAX_FEE);
         IERC20(solarNative).safeTransfer(strategist, strategistFee);
+        console.log("finished charging fees");
     }
 
     // Adds liquidity to AMM and gets more LP tokens.
     function addLiquidity() internal {
+        console.log("starting add liquidity");
         uint256 sushiNativeHalf = IERC20(sushiNative).balanceOf(address(this)).div(2);
 
         if (lpToken0 != sushiNative) {

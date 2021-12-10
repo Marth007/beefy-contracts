@@ -15,7 +15,7 @@ const {
   },
 } = addressBook.moonriver;
 
-const shouldVerifyOnEtherscan = true;
+const shouldVerifyOnEtherscan = false;
 
 const want = web3.utils.toChecksumAddress("0xB0A594e76A876DE40a7fda9819E5c4Ec6d9Fd222");
 

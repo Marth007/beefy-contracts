@@ -1,0 +1,445 @@
+yarn run v1.22.17
+$ hardhat node --fork moonriver
+Forking moonriver from RPC: https://rpc.moonriver.moonbeam.network
+Started HTTP and WebSocket JSON-RPC server at http://127.0.0.1:8545/
+
+Accounts
+========
+Account #0: 0xa776f91e4d67c8b3d2515d0e6f37ee6b73e24cb0 (1000000 ETH)
+
+Account #1: 0xa776f91e4d67c8b3d2515d0e6f37ee6b73e24cb0 (1000000 ETH)
+
+Account #2: 0xa776f91e4d67c8b3d2515d0e6f37ee6b73e24cb0 (1000000 ETH)
+
+Account #3: 0xa776f91e4d67c8b3d2515d0e6f37ee6b73e24cb0 (1000000 ETH)
+
+hardhat_addCompilationResult
+web3_clientVersion
+eth_chainId
+eth_accounts
+[?25l[Feth_accounts (2)[K
+[?25h[?25l[Feth_accounts (3)[K
+[?25heth_getTransactionCount
+eth_blockNumber
+eth_chainId
+[?25l[Feth_chainId (2)[K
+[?25heth_estimateGas
+eth_getBlockByNumber
+eth_gasPrice
+eth_sendTransaction
+  Contract deployment: BeefyVaultV6
+  Contract address:    0x0db1744a6d5bb4ab5feae826af120c08d84eefd4
+  Transaction:         0x102dc5f919864a4cee8975cab4bd02a2711463f0ab9f86344949b72473c7a74b
+  From:                0xa776f91e4d67c8b3d2515d0e6f37ee6b73e24cb0
+  Value:               0 ETH
+  Gas used:            2017425 of 2017425
+  Block #1054561:      0x8313d47255e90718dc76480adee06cc386c27be27bd8ac4a90ebc22c5235317b
+
+eth_chainId
+eth_getTransactionByHash
+eth_chainId
+eth_getTransactionReceipt
+eth_chainId
+eth_estimateGas
+eth_gasPrice
+eth_sendTransaction
+  Contract deployment: StrategyMrSushiLP
+  Contract address:    0xc6c6ba4ad592f3dbe64f3002dd78169815813a22
+  Transaction:         0xdd38a7f60e2413268423880510403b4e2952c483dd93be5769f4feafe80f09ed
+  From:                0xa776f91e4d67c8b3d2515d0e6f37ee6b73e24cb0
+  Value:               0 ETH
+  Gas used:            3841668 of 3841668
+  Block #1054562:      0xb6f565cfc3348a8450ed4be777745451407384a53470d1b081acfdc92d1b9847
+
+eth_chainId
+eth_getTransactionByHash
+eth_chainId
+eth_getTransactionReceipt
+eth_chainId
+eth_call
+  Contract call:       StrategyMrSushiLP#callFee
+  From:                0xa776f91e4d67c8b3d2515d0e6f37ee6b73e24cb0
+  To:                  0xc6c6ba4ad592f3dbe64f3002dd78169815813a22
+
+eth_chainId
+eth_estimateGas
+eth_gasPrice
+eth_sendTransaction
+  Contract call:       StrategyMrSushiLP#setCallFee
+  Transaction:         0xf5d67e606d168743c3be03a3c75518dd3372d238cafe47eadeea413cd41e8548
+  From:                0xa776f91e4d67c8b3d2515d0e6f37ee6b73e24cb0
+  To:                  0xc6c6ba4ad592f3dbe64f3002dd78169815813a22
+  Value:               0 ETH
+  Gas used:            33767 of 33767
+  Block #1054563:      0xda3011c4af8b23923b4f5bf7d03351ab0632d482630309ec5e04881655499eb9
+
+eth_chainId
+eth_getTransactionByHash
+web3_clientVersion
+[?25l[Fweb3_clientVersion (2)[K
+[?25heth_accounts
+eth_chainId
+eth_accounts
+eth_chainId
+eth_call
+  Contract call:       BeefyVaultV6#strategy
+  From:                0xa776f91e4d67c8b3d2515d0e6f37ee6b73e24cb0
+  To:                  0x0db1744a6d5bb4ab5feae826af120c08d84eefd4
+
+eth_accounts
+eth_chainId
+eth_call
+  Contract call:       StrategyMrSushiLP#unirouter
+  From:                0xa776f91e4d67c8b3d2515d0e6f37ee6b73e24cb0
+  To:                  0xc6c6ba4ad592f3dbe64f3002dd78169815813a22
+
+eth_accounts
+eth_chainId
+eth_call
+  Contract call:       BeefyVaultV6#want
+  From:                0xa776f91e4d67c8b3d2515d0e6f37ee6b73e24cb0
+  To:                  0x0db1744a6d5bb4ab5feae826af120c08d84eefd4
+
+eth_accounts
+[?25l[Feth_accounts (2)[K
+[?25heth_chainId
+eth_call
+  Contract call:       <UnrecognizedContract>
+  From:                0xa776f91e4d67c8b3d2515d0e6f37ee6b73e24cb0
+  To:                  0xb0a594e76a876de40a7fda9819e5c4ec6d9fd222
+
+eth_accounts
+eth_chainId
+eth_call
+  Contract call:       <UnrecognizedContract>
+  From:                0xa776f91e4d67c8b3d2515d0e6f37ee6b73e24cb0
+  To:                  0xb0a594e76a876de40a7fda9819e5c4ec6d9fd222
+
+eth_accounts
+eth_blockNumber
+eth_chainId
+[?25l[Feth_chainId (2)[K
+[?25heth_estimateGas
+eth_getBlockByNumber
+eth_feeHistory
+eth_sendTransaction
+  Contract call:       <UnrecognizedContract>
+  Transaction:         0x58e0f711a2e8d46a367e3b76cf12ce608a864e3a119aec7379be8a82b5f4fc97
+  From:                0xa776f91e4d67c8b3d2515d0e6f37ee6b73e24cb0
+  To:                  0x1b02da8cb0d097eb8d57a175b88c7d8b47997506
+  Value:               2.5 ETH
+  Gas used:            102641 of 128301
+  Block #1054564:      0x3bf653694f57edd5be7b0b8a96a5171c7921955354d4f291ef10fd29aaa984fc
+
+eth_chainId
+eth_getTransactionByHash
+eth_chainId
+eth_estimateGas
+eth_feeHistory
+eth_sendTransaction
+  Contract call:       <UnrecognizedContract>
+  Transaction:         0xe2f7e4860c32020017b1a176e62d27e5bdd3d2dbb6f09127d3b2c3a07998390a
+  From:                0xa776f91e4d67c8b3d2515d0e6f37ee6b73e24cb0
+  To:                  0x1b02da8cb0d097eb8d57a175b88c7d8b47997506
+  Value:               2.5 ETH
+  Gas used:            119741 of 145934
+  Block #1054565:      0x4ca4e29834dbcd64e0af5e26dcd76d57ef46d99a3d7aa315facb62a8e81b22cf
+
+eth_chainId
+eth_getTransactionByHash
+eth_blockNumber
+eth_chainId
+[?25l[Feth_chainId (2)[K
+[?25heth_call
+  Contract call:       <UnrecognizedContract>
+  From:                0xa776f91e4d67c8b3d2515d0e6f37ee6b73e24cb0
+  To:                  0x639a647fbe20b6c8ac19e48e2de44ea792c62c5c
+
+eth_chainId
+eth_call
+  Contract call:       <UnrecognizedContract>
+  From:                0xa776f91e4d67c8b3d2515d0e6f37ee6b73e24cb0
+  To:                  0xb44a9b6905af7c801311e8f4e76932ee959c663c
+
+eth_chainId
+eth_estimateGas
+eth_feeHistory
+eth_sendTransaction
+  Contract call:       <UnrecognizedContract>
+  Transaction:         0x50fc5ee196553c192b3d1f07f79847d48b2269600d162e899f7c89cb9443ae73
+  From:                0xa776f91e4d67c8b3d2515d0e6f37ee6b73e24cb0
+  To:                  0x639a647fbe20b6c8ac19e48e2de44ea792c62c5c
+  Value:               0 ETH
+  Gas used:            46323 of 46323
+  Block #1054566:      0x4be715b787dd9611ad935b78c123fe088971ee54a473af50e510f44aded48a0a
+
+eth_chainId
+eth_getTransactionByHash
+eth_chainId
+eth_estimateGas
+eth_feeHistory
+eth_sendTransaction
+  Contract call:       <UnrecognizedContract>
+  Transaction:         0x10b6664b95229b33755a9605cf81cebba2ee4506f592abecf5d0423837428d0f
+  From:                0xa776f91e4d67c8b3d2515d0e6f37ee6b73e24cb0
+  To:                  0xb44a9b6905af7c801311e8f4e76932ee959c663c
+  Value:               0 ETH
+  Gas used:            46275 of 46275
+  Block #1054567:      0xbc3daa8c45ce292916aa923bd7144acd0f21a25016023cee0287b0a128e10222
+
+eth_chainId
+eth_getTransactionByHash
+eth_chainId
+eth_estimateGas
+eth_feeHistory
+eth_sendTransaction
+  Contract call:       <UnrecognizedContract>
+  Transaction:         0x4037444320138d87f9f7c58cb9a1aa61585f465079e4eddeaed5672a1f461948
+  From:                0xa776f91e4d67c8b3d2515d0e6f37ee6b73e24cb0
+  To:                  0x1b02da8cb0d097eb8d57a175b88c7d8b47997506
+  Value:               0 ETH
+  Gas used:            164579 of 180650
+  Block #1054568:      0xfab12b86d33722ce503e9e952baa5d8b652b605be71bc7881d2ee23f7a590e4f
+
+eth_chainId
+eth_getTransactionByHash
+eth_chainId
+eth_call
+  Contract call:       <UnrecognizedContract>
+  From:                0xa776f91e4d67c8b3d2515d0e6f37ee6b73e24cb0
+  To:                  0xb0a594e76a876de40a7fda9819e5c4ec6d9fd222
+
+eth_chainId
+eth_call
+  Contract call:       <UnrecognizedContract>
+  From:                0xa776f91e4d67c8b3d2515d0e6f37ee6b73e24cb0
+  To:                  0xb0a594e76a876de40a7fda9819e5c4ec6d9fd222
+
+eth_chainId
+eth_estimateGas
+eth_feeHistory
+eth_sendTransaction
+  Contract call:       <UnrecognizedContract>
+  Transaction:         0x6c020f8360fec73cf3fdb9791d8ceb87fe7ef21774a36de45736bc49a24dcfdb
+  From:                0xa776f91e4d67c8b3d2515d0e6f37ee6b73e24cb0
+  To:                  0xb0a594e76a876de40a7fda9819e5c4ec6d9fd222
+  Value:               0 ETH
+  Gas used:            46130 of 46130
+  Block #1054569:      0x36e5bf98e9b03bc1366fcde8e623c8dd5e95a00f64752f67e2a8f423c2cb357b
+
+eth_chainId
+eth_getTransactionByHash
+eth_chainId
+eth_estimateGas
+eth_feeHistory
+eth_sendTransaction
+  Contract call:       BeefyVaultV6#depositAll
+  Transaction:         0x8b95550742308f5b03752427561de34b2451b2cd221c633bab06afff5e644dad
+  From:                0xa776f91e4d67c8b3d2515d0e6f37ee6b73e24cb0
+  To:                  0x0db1744a6d5bb4ab5feae826af120c08d84eefd4
+  Value:               0 ETH
+  Gas used:            286589 of 344242
+  Block #1054570:      0xcdd785a37ae2bbf8673c3d01543b8f89031c908f404edc70edad74ac0d81c283
+
+  console.log:
+    Before Deposit
+
+eth_chainId
+eth_getTransactionByHash
+eth_blockNumber
+eth_chainId
+[?25l[Feth_chainId (2)[K
+[?25heth_estimateGas
+eth_feeHistory
+eth_sendTransaction
+  Contract call:       BeefyVaultV6#withdrawAll
+  Transaction:         0x13a25b2c0e05f51b9d4a7d7f22be5660a6d3bd5a377ea411ae0c15619eb4709e
+  From:                0xa776f91e4d67c8b3d2515d0e6f37ee6b73e24cb0
+  To:                  0x0db1744a6d5bb4ab5feae826af120c08d84eefd4
+  Value:               0 ETH
+  Gas used:            215678 of 269597
+  Block #1054571:      0x68ee73620c6063b166d5b9b262dcd8ab47fe06781771cceb000b4fc7f0a59804
+
+eth_chainId
+eth_getTransactionByHash
+eth_chainId
+eth_call
+  Contract call:       <UnrecognizedContract>
+  From:                0xa776f91e4d67c8b3d2515d0e6f37ee6b73e24cb0
+  To:                  0xb0a594e76a876de40a7fda9819e5c4ec6d9fd222
+
+eth_accounts
+[?25l[Feth_accounts (2)[K
+[?25heth_chainId
+eth_call
+  Contract call:       BeefyVaultV6#strategy
+  From:                0xa776f91e4d67c8b3d2515d0e6f37ee6b73e24cb0
+  To:                  0x0db1744a6d5bb4ab5feae826af120c08d84eefd4
+
+eth_accounts
+eth_chainId
+eth_call
+  Contract call:       StrategyMrSushiLP#unirouter
+  From:                0xa776f91e4d67c8b3d2515d0e6f37ee6b73e24cb0
+  To:                  0xc6c6ba4ad592f3dbe64f3002dd78169815813a22
+
+eth_accounts
+eth_chainId
+eth_call
+  Contract call:       BeefyVaultV6#want
+  From:                0xa776f91e4d67c8b3d2515d0e6f37ee6b73e24cb0
+  To:                  0x0db1744a6d5bb4ab5feae826af120c08d84eefd4
+
+eth_accounts
+[?25l[Feth_accounts (2)[K
+[?25heth_chainId
+eth_call
+  Contract call:       <UnrecognizedContract>
+  From:                0xa776f91e4d67c8b3d2515d0e6f37ee6b73e24cb0
+  To:                  0xb0a594e76a876de40a7fda9819e5c4ec6d9fd222
+
+eth_accounts
+eth_chainId
+eth_call
+  Contract call:       <UnrecognizedContract>
+  From:                0xa776f91e4d67c8b3d2515d0e6f37ee6b73e24cb0
+  To:                  0xb0a594e76a876de40a7fda9819e5c4ec6d9fd222
+
+eth_accounts
+eth_chainId
+eth_estimateGas
+eth_feeHistory
+eth_sendTransaction
+  Contract call:       <UnrecognizedContract>
+  Transaction:         0x68ef2ca1f9675f96934893cf06f86b5c314cb6306b74a95d8c0d1f9201830031
+  From:                0xa776f91e4d67c8b3d2515d0e6f37ee6b73e24cb0
+  To:                  0x1b02da8cb0d097eb8d57a175b88c7d8b47997506
+  Value:               2.5 ETH
+  Gas used:            102641 of 128301
+  Block #1054572:      0xfbf7426eafa9d85e2a8543d7dd52793f7536c7f10cafa8ad2ec0c8f77cdec900
+
+eth_chainId
+eth_getTransactionByHash
+eth_chainId
+eth_estimateGas
+eth_feeHistory
+eth_sendTransaction
+  Contract call:       <UnrecognizedContract>
+  Transaction:         0x50cae05fdd6a2d19f01f330e9f5af8be2f14c07b9c0f2178e74b36d2ac75151f
+  From:                0xa776f91e4d67c8b3d2515d0e6f37ee6b73e24cb0
+  To:                  0x1b02da8cb0d097eb8d57a175b88c7d8b47997506
+  Value:               2.5 ETH
+  Gas used:            119741 of 145934
+  Block #1054573:      0xc6c72f415ca99bce5e5e2f933b865c4e19fe15679e06f48a15dc1a6bd72a7e68
+
+eth_chainId
+eth_getTransactionByHash
+eth_chainId
+eth_call
+  Contract call:       <UnrecognizedContract>
+  From:                0xa776f91e4d67c8b3d2515d0e6f37ee6b73e24cb0
+  To:                  0x639a647fbe20b6c8ac19e48e2de44ea792c62c5c
+
+eth_chainId
+eth_call
+  Contract call:       <UnrecognizedContract>
+  From:                0xa776f91e4d67c8b3d2515d0e6f37ee6b73e24cb0
+  To:                  0xb44a9b6905af7c801311e8f4e76932ee959c663c
+
+eth_chainId
+eth_estimateGas
+eth_feeHistory
+eth_sendTransaction
+  Contract call:       <UnrecognizedContract>
+  Transaction:         0x214c784259977d897cf8ba80bbf7112d6037c141a6044df71ecdc214ff167264
+  From:                0xa776f91e4d67c8b3d2515d0e6f37ee6b73e24cb0
+  To:                  0x639a647fbe20b6c8ac19e48e2de44ea792c62c5c
+  Value:               0 ETH
+  Gas used:            29223 of 29223
+  Block #1054574:      0x8c381c5ddcd6799d4f5fdcb4b82709bd944e21aebb46745e909dd5f6a2a98694
+
+eth_chainId
+eth_getTransactionByHash
+eth_chainId
+eth_estimateGas
+eth_feeHistory
+eth_sendTransaction
+  Contract call:       <UnrecognizedContract>
+  Transaction:         0xe80617a6e3583f394f52f7e8da8446c9925d0ed0a4e75069364e0fca2ecf971e
+  From:                0xa776f91e4d67c8b3d2515d0e6f37ee6b73e24cb0
+  To:                  0xb44a9b6905af7c801311e8f4e76932ee959c663c
+  Value:               0 ETH
+  Gas used:            46263 of 46263
+  Block #1054575:      0xc5f07c9a15f3c4e0e3227eec945b2a53f0cf56a5e02ae485e431fa449848f98d
+
+eth_chainId
+eth_getTransactionByHash
+eth_chainId
+eth_estimateGas
+eth_feeHistory
+eth_sendTransaction
+  Contract call:       <UnrecognizedContract>
+  Transaction:         0x55bbf05d5c46695a06aa4400ae09c1ba21c592567a81f2979d043e190b979452
+  From:                0xa776f91e4d67c8b3d2515d0e6f37ee6b73e24cb0
+  To:                  0x1b02da8cb0d097eb8d57a175b88c7d8b47997506
+  Value:               0 ETH
+  Gas used:            139478 of 155277
+  Block #1054576:      0x1ba2bb6e2afcb604c79f835dfae60deca3d597f8a4e7c7f8966c968afc4e0d45
+
+eth_chainId
+eth_getTransactionByHash
+eth_chainId
+eth_call
+  Contract call:       <UnrecognizedContract>
+  From:                0xa776f91e4d67c8b3d2515d0e6f37ee6b73e24cb0
+  To:                  0xb0a594e76a876de40a7fda9819e5c4ec6d9fd222
+
+eth_chainId
+eth_call
+  Contract call:       <UnrecognizedContract>
+  From:                0xa776f91e4d67c8b3d2515d0e6f37ee6b73e24cb0
+  To:                  0xb0a594e76a876de40a7fda9819e5c4ec6d9fd222
+
+eth_chainId
+eth_estimateGas
+eth_feeHistory
+eth_sendTransaction
+  Contract call:       <UnrecognizedContract>
+  Transaction:         0xd9019239cd15a01cfddd776ae18ad55c6c2177cd223f3a8695f0cd8d18839117
+  From:                0xa776f91e4d67c8b3d2515d0e6f37ee6b73e24cb0
+  To:                  0xb0a594e76a876de40a7fda9819e5c4ec6d9fd222
+  Value:               0 ETH
+  Gas used:            46130 of 46130
+  Block #1054577:      0x886cda965d37874b63f690bb48babe95e0069126356e2a6e631d8e99714c02b6
+
+eth_chainId
+eth_getTransactionByHash
+eth_chainId
+eth_estimateGas
+eth_feeHistory
+eth_sendTransaction
+  Contract call:       BeefyVaultV6#depositAll
+  Transaction:         0xfbb4334da478076f84a4c236ba4bae6fdf1d4e7dbd54707740cbfeb0adf43944
+  From:                0xa776f91e4d67c8b3d2515d0e6f37ee6b73e24cb0
+  To:                  0x0db1744a6d5bb4ab5feae826af120c08d84eefd4
+  Value:               0 ETH
+  Gas used:            269489 of 326859
+  Block #1054578:      0xac12c208dd1cedaaa8507818cc8c5d0deec8a9c83504733346ba47ad64ea590b
+
+  console.log:
+    Before Deposit
+
+eth_chainId
+eth_getTransactionByHash
+eth_chainId
+eth_call
+  Contract call:       BeefyVaultV6#balance
+  From:                0xa776f91e4d67c8b3d2515d0e6f37ee6b73e24cb0
+  To:                  0x0db1744a6d5bb4ab5feae826af120c08d84eefd4
+
+eth_chainId
+eth_call
+  Contract call:       BeefyVaultV6#getPricePerFullShare
+  From:                0xa776f91e4d67c8b3d2515d0e6f37ee6b73e24cb0
+  To:                  0x0db1744a6d5bb4ab5feae826af120c08d84eefd4
+

@@ -98,6 +98,9 @@ const config: DeploymentConfig = {
     // Obtain one at https://etherscan.io/
     apiKey: "K3V3N245BA1DSG877GK8EFESWPTMMFTG17",
   },
+  mocha: {
+    timeout: 100000000
+  },
   solidity: {
     compilers: [
       {
