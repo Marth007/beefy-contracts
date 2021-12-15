@@ -5,18 +5,18 @@ import { chainCallFeeMap } from "../../utils/chainCallFeeMap";
 const { zapNativeToToken, getVaultWant, unpauseIfPaused, getUnirouterData } = require("../../utils/testHelpers");
 const { delay } = require("../../utils/timeHelpers");
 
-const TIMEOUT = 100 * 60 * 100000;
+const TIMEOUT = 1000 * 60 * 100000;
 
 const chainName = "moonriver";
 const chainData = addressBook[chainName];
 const { beefyfinance } = chainData.platforms;
 
 const config = {
-  vault: "0x0DB1744a6D5bb4aB5FeaE826af120c08d84eefd4",
+  vault: "0x36f2f0e069C9Aa9b7B02fa4Fd98Bb54129AD2F6c",
   // vault: "0x0B702b9c0B170dd7199fA9e66d8E9440184c569e",
   vaultContract: "BeefyVaultV6",
   strategyContract: "StrategyMrSushiLP",
-  testAmount: ethers.utils.parseEther("5"),
+  testAmount: ethers.utils.parseEther("5000"),
   wnative: chainData.tokens.WNATIVE_SUSHI.address,
   keeper: beefyfinance.keeper,
   strategyOwner: beefyfinance.strategyOwner,
@@ -74,7 +74,7 @@ describe("VaultLifecycleTest", () => {
 
     const vaultBal = await vault.balance();
     const pricePerShare = await vault.getPricePerFullShare();
-    await delay(5000);
+    await delay(20000);
   //  const callRewardBeforeHarvest = await strategy.callReward();
   //  expect(callRewardBeforeHarvest).to.be.gt(0);
     await strategy.harvestWithCallFeeRecipient("0xf50225a84382c74cbdea10b0c176f71fc3de0c4d");

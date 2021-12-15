@@ -157,6 +157,8 @@ contract StrategyMrSushiLP is StratManager, FeeManager {
             console.log("in if harvest");
             lastHarvest = block.timestamp;
             emit StratHarvest(msg.sender, wantHarvested, balanceOf());
+            console.log("End Harvest sushiNative bal %s", IERC20(sushiNative).balanceOf(address(this)));
+
         }
     }
 
@@ -191,6 +193,7 @@ contract StrategyMrSushiLP is StratManager, FeeManager {
         uint256 strategistFee = solarNativeBal.mul(STRATEGIST_FEE).div(MAX_FEE);
         IERC20(solarNative).safeTransfer(strategist, strategistFee);
         console.log("finished charging fees");
+        console.log("sushiNative bal %s", IERC20(sushiNative).balanceOf(address(this)));
     }
 
     // Adds liquidity to AMM and gets more LP tokens.
@@ -199,15 +202,21 @@ contract StrategyMrSushiLP is StratManager, FeeManager {
         uint256 sushiNativeHalf = IERC20(sushiNative).balanceOf(address(this)).div(2);
 
         if (lpToken0 != sushiNative) {
+            console.log("Starting Sushi Native to LP token0");
+            console.log("sushiNative bal %s", IERC20(sushiNative).balanceOf(address(this)));
             IUniswapRouterETH(unirouter).swapExactTokensForTokens(sushiNativeHalf, 0, sushiNativeToLp0Route, address(this), block.timestamp);
         }
 
         if (lpToken1 != sushiNative) {
+            console.log("Starting Sushi Native to LP token1");
+            console.log("sushiNative bal %s", IERC20(sushiNative).balanceOf(address(this)));
             IUniswapRouterETH(unirouter).swapExactTokensForTokens(sushiNativeHalf, 0, sushiNativeToLp1Route, address(this), block.timestamp);
         }
 
         uint256 lp0Bal = IERC20(lpToken0).balanceOf(address(this));
         uint256 lp1Bal = IERC20(lpToken1).balanceOf(address(this));
+        console.log("lp0 bal %s", IERC20(lp0Bal).balanceOf(address(this)));
+        console.log("lp1 bal %s", IERC20(lp1Bal).balanceOf(address(this)));
         IUniswapRouterETH(unirouter).addLiquidity(lpToken0, lpToken1, lp0Bal, lp1Bal, 1, 1, address(this), block.timestamp);
     }
 
@@ -325,4 +334,5 @@ contract StrategyMrSushiLP is StratManager, FeeManager {
     function sushiNativeToLp1() external view returns (address[] memory) {
         return sushiNativeToLp1Route;
     }
+    receive () external payable {}
 }
